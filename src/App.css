@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  justify-items: center; /* Centre horizontalement les éléments de la grille */
+  margin: 0 auto; /* Centre le conteneur lui-même */
+  max-width: 1200px; /* Limite la largeur maximale */
+}
+
+@media (max-width: 900px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px; /* Ajustement pour 2 colonnes */
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px; /* Ajustement pour 1 colonne */
+  }
+}
+
+/* Optionnel : Pour centrer aussi le contenu des cartes */
+.MuiCard-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 300px; /* Largeur maximale uniforme pour toutes les cartes */
+}
