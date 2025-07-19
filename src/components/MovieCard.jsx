@@ -11,6 +11,7 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import { Link } from 'react-router-dom'; // ✅ IMPORT
 
 const StyledRating = styled(Rating)(({ theme }) => ({
   '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
@@ -48,31 +49,32 @@ function IconContainer(props) {
 
 function MovieCard({ movie }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        title={movie.name}
-       
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={movie.posterurl}
-        alt=""
-      />
-      <CardContent>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          {movie.description}
-        </Typography>
-        <StyledRating
-          name="highlight-selected-only"
-          value={movie.rating}
-          IconContainerComponent={IconContainer}
-          getLabelText={(value) => customIcons[value].label}
-          highlightSelectedOnly
-          readOnly
+    <Link to={`/trailer/${movie.name}`} style={{ textDecoration: 'none' }}>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardHeader
+          title={movie.name}
         />
-      </CardContent>
-    </Card>
+        <CardMedia
+          component="img"
+          height="194"
+          image={movie.posterurl}
+          alt=""
+        />
+        <CardContent>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            {movie.description}
+          </Typography>
+          <StyledRating
+            name="highlight-selected-only"
+            value={movie.rating}
+            IconContainerComponent={IconContainer}
+            getLabelText={(value) => customIcons[value].label}
+            highlightSelectedOnly
+            readOnly
+          />
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 
